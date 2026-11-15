@@ -31,9 +31,9 @@ func TestGenerateRandomElements(t *testing.T) {
 			}
 
 			for i, value := range data {
-				if value <= 0 {
+				if value <= 0 || value > 1_000_000 {
 					t.Errorf(
-						"element %d is not positive: %d",
+						"element %d is outside the range [1, 1000000]: %d",
 						i,
 						value,
 					)
@@ -141,6 +141,14 @@ func TestMaxChunks(t *testing.T) {
 		{
 			name: "size not divisible by eight",
 			data: []int{1, 2, 3, 4, 5, 6, 7, 8, 99},
+			want: 99,
+		},
+		{
+			name: "remainder with larger chunks",
+			data: []int{
+				1, 2, 3, 4, 5, 6, 7, 8,
+				9, 10, 11, 12, 13, 14, 15, 16, 99,
+			},
 			want: 99,
 		},
 		{

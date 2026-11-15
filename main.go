@@ -27,7 +27,7 @@ func generateRandomElements(size int) []int {
 	return data
 }
 
-// maximum returns the maximum number of elements.
+// maximum returns the largest element in the slice.
 func maximum(data []int) int {
 	if len(data) == 0 {
 		return 0
@@ -44,7 +44,7 @@ func maximum(data []int) int {
 	return max
 }
 
-// maxChunks returns the maximum number of elements in a chunks.
+// maxChunks returns the largest element using concurrent chunk processing.
 func maxChunks(data []int) int {
 	if len(data) == 0 {
 		return 0
